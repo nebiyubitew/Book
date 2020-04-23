@@ -12,6 +12,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 	<db:config name="Database_Config" doc:name="Database Config" doc:id="7a7fe25d-cca5-404c-8448-6687b8e6e5eb" >
 		<db:my-sql-connection host="localhost" port="3306" user="root" database="northwind" password="Akaye143@kb"/>
 	</db:config>
+	
 	<flow name="database1Flow" doc:id="e0b9b0f1-5607-4ccf-ad84-d036b7fc20c9" >
 		<http:listener doc:name="Listener" doc:id="7de66747-bda3-4fb0-bdc1-f0e66b040079" config-ref="HTTP_Listener_config" path="/select"/>
 		<db:select doc:name="Select" doc:id="d48ea229-32b3-43a0-bb66-e3869f2cc80c" config-ref="Database_Config">
@@ -31,5 +32,6 @@ output application/json
 ]]></ee:set-payload>
 			</ee:message>
 		</ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="8723cef4-d4cf-401f-9180-99d3bfc1253e" message="#[payload]"/>
 	</flow>
 </mule>
