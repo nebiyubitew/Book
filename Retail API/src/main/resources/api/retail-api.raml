@@ -36,7 +36,10 @@ traits:
     responses:
     is:
       - postResponse 
-  /{id}:
+  /{productID}:
+    uriParameters:
+      productID:
+        type: integer
     get:
       description: Fetches a specific product.
       responses:
@@ -70,8 +73,10 @@ traits:
       application/json:
     is:
       - postResponse
-  /{billid}:
-    displayName: Bill ID
+  /{billID}:
+    uriParameters:
+      billID:
+        type: integer
     get:
       description: Fetches bills of a particular id.
       responses:
@@ -95,7 +100,7 @@ traits:
       responses:
       is:
         - deleteResponse 
-/productcategory:
+/productCategory:
   displayName: Product Category
   get:
     description: Feches list of all product category data
@@ -112,7 +117,10 @@ traits:
     responses:
     is:
       - postResponse 
-  /{productid}:
+  /{productCategoryID}:
+    uriParameters:
+      productCategoryID:
+        type: integer
     displayName: Product ID
     get:
       description: Fetches a specific product category
