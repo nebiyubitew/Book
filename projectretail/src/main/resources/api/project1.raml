@@ -1,0 +1,180 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/f8e1342e-5e93-4d43-882c-92bec257089c/ # 
+title: Project1
+types: !include trait.raml
+  
+/Products:
+  get:
+    description: fetches list of all product data
+    responses:
+      200:
+        body:
+          application/json:
+            example: {
+              "successfuly fetched"}
+  /ID:
+    get:
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      description: fetch a specific 
+      responses:
+       200:
+        body:
+          application/json:
+            example: {
+              "ID fetched successfuly"}
+    put:
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      description: updates product data
+      responses:
+        200:
+          body:
+            application/json:
+              example: {
+                "updated successfully"}
+                
+    delete:
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      description: removes specific id
+      responses:
+        200:
+          body:
+            application/json:
+              example: {
+                "deleted"}
+                
+              
+  post:
+      description: creates new product
+      responses:
+       200:
+        body:
+          application/json:
+            example: {"success added"}
+       401:
+         body:
+            application/json:
+              example: {
+                "Unauthorized user"}
+                
+
+    
+/Bills:
+  get:
+    queryParameters:
+        id:
+          type: integer
+          required: true
+    description: fetches Bill data
+    responses:
+      200:
+        body:
+          application/json:
+            example: {
+              "Bill retrived"}
+      404:
+        body:
+          application/json:
+            example: {
+              "not found"}
+              
+  post:
+    description: creates Bill
+    responses:
+      200:
+        body:
+          application/json:
+            example: {"Bill created"}
+  /billsID:
+    description: Bill Id
+    get:
+       queryParameters:
+        id:
+          type: integer
+          required: true
+       description: fetches bill id
+       responses:
+        200:
+          body:
+            application/json:
+              example: {
+                "bill id fetched"}
+    put:
+      description: updates bill data
+      responses:
+        200:
+          body:
+            application/json:
+              example: {
+                "id successfully updated"}
+    delete:
+      description: delete bill from the system            
+      responses:
+        200:
+          body:
+            application/json:
+              example: {
+                "deleted successfully"}
+/Product catagory:
+  get:
+    description: fetches product catagory
+    responses:
+        200:
+          body:
+            application/json:
+              example: {
+                "pc fetched successfully"}
+  post:
+    description: creates new product catagory
+    responses:
+        200:
+          body:
+            application/json:
+              example: {
+                "created new pc successfully"}
+  /Id:
+    description: specific pc id
+    get:
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      description: id specific pc
+      responses:
+       200:
+        body:
+          application/json:
+            example: {
+              "ID fetched successfuly"}
+    put:
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      description: updates pc id data
+      responses:
+        200:
+          body:
+            application/json:
+              example: {
+                "id successfully updated"}
+    delete:
+      description: deletes ID pc           
+      responses:
+        200:
+          body:
+            application/json:
+              example: {
+                "deleted successfully"}
+                 
+            
+
+                        
