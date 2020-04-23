@@ -31,6 +31,7 @@ traits:
     is:
       - getresponse:
   post:
+    description: Creates a new product. 
     body:
       application/json:
     responses:
@@ -51,11 +52,19 @@ traits:
     is:
       - getresponse:
     put:
+      description: Updates product.
       body:
        application/json:
       responses:
       is:
         - putResponse 
+    delete:
+      description: Deletes prodcut by ID
+      body:
+        application/json:
+      responses:
+      is:
+       deleteResponse 
 /bills:  
   displayName: Bills
   description: Fetches all bill data
