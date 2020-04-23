@@ -1,0 +1,139 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/2949bf6d-b06e-4c8c-9cc2-4fe5e48a7171/ # 
+title: Retail API
+description: This API returns, creates, updates & deles product, product category and bills.
+#Developed by Ashenafi E. 
+#Project Manager: Henok 
+#Craft Software, April 2020.
+securitySchemes:
+  basic:
+    description: |
+      This API supports Basic Authentication.
+    type: Basic Authentication 
+types:
+  productDataType: !include dataTypes/productDataType.raml
+  productCategoryDataType: !include dataTypes/productCategoryDataType.raml
+  bilDataType: !include dataTypes/billDataType.raml
+traits:
+  getresponse: !include traits/getResponse.raml
+  postResponse: !include traits/postResponseTrait.raml
+  putResponse: !include traits/putResponse.raml
+  deleteResponse: !include traits/deleteResponse.raml
+/product:
+  get:
+    description: Fetches all products.
+    responses:
+     200:
+       body:
+          application/json:
+            type: productDataType
+            example: !include examples/productExample.raml
+    is:
+      - getresponse:
+  post:
+    body:
+      application/json:
+    responses:
+    is:
+      - postResponse 
+  /{id}:
+    get:
+      description: Fetches a specific product.
+      responses:
+       200:
+        body:
+          application/json:
+            type: productDataType
+            example: !include examples/productExample.raml
+    is:
+      - getresponse:
+    put:
+      body:
+       application/json:
+      responses:
+      is:
+        - putResponse 
+/bills:  
+  displayName: Bills
+  description: Fetches all bill data
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: bilDataType
+            example:
+              !include examples/billExample.raml 
+  post:
+    description: Creates a a bill id
+    body:
+      application/json:
+    is:
+      - postResponse
+  /{billid}:
+    displayName: Bill ID
+    get:
+      description: Fetches bills of a particular id.
+      responses:
+        200:
+          body:
+            application/json:
+              type: bilDataType
+              example:
+                !include examples/billExample.raml
+    put:
+      description: Updates bill data.
+      body:
+        application/json:
+      responses:
+      is:
+        - putResponse 
+    delete:
+      description: Deletes bill from the system.
+      body:
+        application/json:
+      responses:
+      is:
+        - deleteResponse 
+/productcategory:
+  displayName: Product Category
+  get:
+    description: Feches list of all product category data
+    responses: 
+      200:
+        body:
+          application/json:
+            type: productCategoryDataType
+            example: !include examples/productCategoryExample.raml
+  post:
+    description: Creates a new product category.
+    body:
+      application/json:
+    responses:
+    is:
+      - postResponse 
+  /{productid}:
+    displayName: Product ID
+    get:
+      description: Fetches a specific product category
+      responses:
+       200:
+         body:
+            application/json:
+              type: productCategoryDataType
+              example: !include examples/productCategoryExample.raml
+    put:
+      description: Updates a product category.
+      body:
+        application/json:
+      responses:
+      is:
+        - putResponse 
+    delete:
+      description: Removes an existing product category
+      body:
+        application/json:
+      responses:
+      is:
+        - deleteResponse
+
