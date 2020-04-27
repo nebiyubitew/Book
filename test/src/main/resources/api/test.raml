@@ -1,0 +1,181 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/10ebb94c-c9ed-4ed1-ba3e-e10d7dab815f/ # 
+title: project
+/products:
+  description: 
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {succssful}
+      400:
+        body:
+          application/json:
+            example:
+              {bad request}        
+  /id:
+    description: must use an id
+    get:
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      responses:
+        200:
+          body:
+           application/json:
+             example:
+                {succssfuly used} 
+        501:
+          body:
+            application/json:
+              example:
+                {server failer}         
+    put: 
+     description: updated by sep id
+     queryParameters:
+        id:
+          type: integer
+          required: true
+     responses:
+        200:
+          body:
+            application/json:
+              example:
+                {updated}
+    delete:    
+     description: deleted by sep id
+     queryParameters:
+        id:
+          type: integer
+          required: true
+     responses:
+        200:
+          body:
+            application/json:
+              example:
+                {deleted}                          
+  post:
+     responses:
+       200:
+         body:
+          application/json:
+            example:
+              {succssful added}  
+/Bills:
+  description: all bill data
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {succssfully out come}
+  post:
+    description: Client has to use this bill Id while adding andremoving  
+    responses:
+       200:
+         body:
+          application/json:
+            example:
+              {succssful bill is added}             
+  /id:
+    description: fetches bill of a particular id
+    get:
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      responses:
+        200:
+          body:
+           application/json:
+             example:
+                {succssfuly used} 
+        401:
+          body:
+            application/json:
+              example:
+                {needs an id}              
+    put:
+      description: Updates bill data
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {updated the bill}
+    delete:
+      description: deleted by sep id
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {deleted the bill}  
+      
+    
+/productcatagory:
+  description: fetches list of all productcatagory data
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            example:
+              {succssful data}
+  /id:
+    description: must use an id from data
+    get:
+      queryParameters:
+        id:
+          type: integer
+          required: true
+      responses:
+        200:
+          body:
+           application/json:
+             example:
+                {succssfuly used data}   
+    put: 
+     description: updated by data id
+     queryParameters:
+        id:
+          type: integer
+          required: true
+     responses:
+        200:
+          body:
+            application/json:
+              example:
+                {updated data}
+    delete:    
+     description: deleted by data id
+     queryParameters:
+        id:
+          type: integer
+          required: true
+     responses:
+        200:
+          body:
+            application/json:
+              example:
+                {deleted data}                          
+  post:
+     responses:
+       200:
+         body:
+          application/json:
+            example:
+              {succssful added data} 
+  
